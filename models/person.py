@@ -1,6 +1,6 @@
 from mongoengine import Document, StringField, IntField, connect
 
-connect('teste-tex')
+connect('teste-tex', host='mongodb')
 
 class Person(Document):
     nome = StringField(required=True)

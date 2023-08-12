@@ -1,0 +1,21 @@
+version: '3'
+services:  
+  app:
+    build: .
+    command: python app.py
+    ports:
+      - "5000:5000"
+    volumes:
+      - .:/app
+    links:
+      - db
+  db:
+    image: mongo:latest
+    hostname: mongodb
+    environment:
+      - MONGO_INITDB_DATABASE=teste-tex
+    ports:
+      - 27017:27017
+    command: 
+      - '--logpath'
+      - '/var/log/mongodb/mongod.log'

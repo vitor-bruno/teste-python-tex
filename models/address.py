@@ -1,6 +1,6 @@
 from mongoengine import Document, StringField, connect
 
-connect('teste-tex')
+connect('teste-tex', host='mongodb')
 
 class Address(Document):
     bairro = StringField(required=True)

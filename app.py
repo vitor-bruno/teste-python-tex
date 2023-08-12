@@ -24,4 +24,4 @@ app.register_blueprint(people_blueprint, url_prefix='/api/people')
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run('0.0.0.0')
