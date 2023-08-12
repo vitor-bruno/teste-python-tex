@@ -44,7 +44,6 @@ docker-compose up
 ### Endpoints - Cadastramento de pessoas
 GET http://127.0.0.1:5000/api/pessoas
 
-```
 RESPONSE
 ```json
 [
@@ -66,7 +65,7 @@ POST http://127.0.0.1:5000/api/pessoas
 REQUEST
 ```json
 {
-	"nome": "José Miranda",
+    "nome": "José Miranda",
     "idade": 31
 }
 ```
@@ -84,7 +83,7 @@ PUT http://127.0.0.1:5000/api/pessoas/64d7f5f1b5e9c60846650177
 REQUEST (corpo pode conter apenas nome, apenas idade ou ambos)
 ```json
 {
-	"nome": "José Alvarez",
+    "nome": "José Alvarez",
     "idade": 35
 }
 ```
@@ -109,7 +108,6 @@ RESPONSE
 ### Endpoint - Busca de CEP
 GET http://127.0.0.1:5000/api/addresses?cep=03113010
 
-```
 RESPONSE
 ```json
 {
