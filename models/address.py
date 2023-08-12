@@ -1,4 +1,4 @@
-from mongoengine import Document, StringField, IntField, connect
+from mongoengine import Document, StringField, connect
 
 connect('teste-tex')
 
@@ -20,14 +20,6 @@ class Address(Document):
             "logradouro": self.logradouro,
             "complemento": self.complemento
         }
-
-class Person(Document):
-    nome = StringField(required=True)
-    idade = IntField(required=True)
-
-    def to_dict(self):
-        return {
-            "id": str(self.id),
-            "nome": self.nome,
-            "idade": self.idade
-        }
+    
+    def __str__(self):
+        return f'{self.logradouro}, {self.bairro}, {self.cidade}/{self.uf} - CEP {self.cep}'
