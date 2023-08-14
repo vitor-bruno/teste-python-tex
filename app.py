@@ -1,4 +1,5 @@
 from flask import Flask, jsonify
+from mongoengine import connect
 from werkzeug.exceptions import HTTPException, default_exceptions
 
 
@@ -15,7 +16,6 @@ def handle_error(e):
 for ex in default_exceptions:
     app.register_error_handler(ex, handle_error)
 
-
 from routes.addresses import addresses_blueprint
 from routes.people import people_blueprint
 
@@ -24,4 +24,5 @@ app.register_blueprint(people_blueprint, url_prefix='/api/people')
 
 
 if __name__ == '__main__':
+    connect('teste-tex', host='mongodb')
     app.run('0.0.0.0')
