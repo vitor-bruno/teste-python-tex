@@ -8,6 +8,7 @@ Bibliotecas utilizadas:
 1. Flask - desenvolvimento de rotas da API.
 2. mongoengine - interação com banco de dados MongoDB.
 3. requests - comunicação com serviço externo para busca de CEP.
+4. pytest e mongomock - testes.
 
 Estrutura do projeto:
 ```
@@ -121,4 +122,10 @@ RESPONSE
     },
     "sucesso": true
 }
+```
+
+## Rodando os testes 
+
+```sh
+pytest
 ```
