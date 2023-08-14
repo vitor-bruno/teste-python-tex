@@ -62,4 +62,4 @@ def delete_person(id):
     else:
         return jsonify({'erro': 'pessoa não encontrada'}), 404
 
-    return jsonify({'sucesso': f'{person.nome} deletado(a) com sucesso'})
+    return jsonify({'sucesso': f'Pessoa {person.id} ({person.nome}) removida com sucesso'})

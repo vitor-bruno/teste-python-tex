@@ -15,28 +15,28 @@ def get_address():
     if not cep:
         return jsonify({'erro': 'insira o parâmetro CEP na requisição'}), 400
     
-    response = requests.get(f"https://viacep.com.br/ws/{cep}/xml/")
-    
-    if response.status_code == 400:
-        return jsonify({'erro': 'CEP inválido'}), 400
-    
-    tree = ElementTree.fromstring(response.content)
-    
-    if tree[0].tag == 'erro':
-        return jsonify({'erro': 'CEP não localizado'}), 404
-    
-    address_dict = {
-        'cep': tree[0].text,
-        'logradouro': tree[1].text,
-        'complemento': tree[2].text or '',
-        'bairro': tree[3].text,
-        'cidade': tree[4].text,
-        'uf': tree[5].text
-    }
-
-    address_obj = Address.objects(cep=tree[0].text).first()
+    address_obj = Address.objects(cep=cep).first()
 
     if not address_obj:
+        response = requests.get(f"https://viacep.com.br/ws/{cep}/xml/")
+        
+        if response.status_code == 400:
+            return jsonify({'erro': 'CEP inválido'}), 400
+        
+        tree = ElementTree.fromstring(response.content)
+        
+        if tree[0].tag == 'erro':
+            return jsonify({'erro': 'CEP não localizado'}), 404
+        
+        address_dict = {
+            'cep': tree[0].text,
+            'logradouro': tree[1].text,
+            'complemento': tree[2].text or '',
+            'bairro': tree[3].text,
+            'cidade': tree[4].text,
+            'uf': tree[5].text
+        }
+
         address_obj = Address(**address_dict)
         address_obj.save()
 
