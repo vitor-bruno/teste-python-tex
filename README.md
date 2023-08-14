@@ -21,6 +21,10 @@ Estrutura do projeto:
 │   ├── __init__.py
 │   ├── addresses.py
 │   └── people.py
+├── tests
+│   ├── __init__.py
+│   ├── test_addresses.py
+│   └── test_people.py
 ├── .gitignore
 ├── app.py
 ├── docker-compose.yml
@@ -31,6 +35,7 @@ Estrutura do projeto:
 
 * /modelos - definição das entidades do banco.
 * /routes - definição de rotas da API.
+* /tests - testes unitários.
 * app.py - arquivo de inicialização da aplicação.
 
 ## Rodando o projeto 
